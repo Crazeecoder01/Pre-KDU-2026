@@ -57,3 +57,35 @@ EXPLAIN ANALYZE:
 
 Reason for performance Improvement:
     Before the index, MySQL had to scan through all the rows one by one to find matches for category_id,  which took extra time. After creating the index, it could directly look up the needed rows using the index.
+
+
+# Answering the 3-WHY's
+
+Why #1: Why do we use Foreign Keys?
+
+We use foreign keys to make sure the data stays valid and consistent.
+If someone tries to insert a content record with category_id = 999 (but category 999 doesn’t exist), the foreign key will block the insert.
+This prevents “orphan” records. Without foreign keys, your database can easily end up with broken or meaningless data.
+
+Why #2: Why is ACID important for this database?
+
+When 1000 users watch “Stranger Adventures” at the same time, the system must increase the view count correctly.
+
+Without ACID:
+
+→ Two users might update views at the same time and overwrite each other
+→ Database might crash in the middle of updating
+→ Data could become inconsistent
+
+With ACID:
+
+Atomicity: Each update happens completely or not at all
+Consistency: Data is same across all states, it never becomes irrelevant or obslete
+Isolation: Multiple updates don’t interfere with each other
+Durability: Once updated, the view count stays updated even after a crash
+
+Why #3: Why would we create an index on category_id?
+
+On the StreamFlix homepage, hundreds of queries filter content by category,
+Without an index, MySQL scans the entire content table every time to find matching rows — which is slow.
+With an index on category_id, MySQL can jump directly to the rows it needs, instead of checking every row.
