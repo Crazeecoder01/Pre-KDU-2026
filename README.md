@@ -5,12 +5,12 @@ select c2.content_id, c2.title, c1.category_name
 from category c1 right join
 content c2 on c1.category_id= c2.category_id;
 
-![alt text](image.png)
+![alt text](assets/q1.png)
 
 Query2:
 select title, rating, views_in_millions as views from content order by  views_in_millions desc;
 
-![alt text](image-4.png)
+![alt text](assets/q2.png)
 
 Query3:
 select t.category_name, avg(t.rating) from
@@ -18,7 +18,7 @@ select t.category_name, avg(t.rating) from
 from category c1 right join
 content c2 on c1.category_id= c2.category_id) as t group by t.category_name;
 
-![alt text](image-1.png)
+![alt text](assets/q3(1).png)
 
 Alternative (to get all the content rows)
 
@@ -32,7 +32,7 @@ from content c2
 right join category c1 
     ON c1.category_id = c2.category_id;
 
-![alt text](image-2.png)
+![alt text](assets/q3(2).png)
 
 
 Query 4:
@@ -41,7 +41,7 @@ FROM content c2
 LEFT JOIN category c1 ON c1.category_id = c2.category_id
 WHERE c2.rating > 8.5 AND c2.views_in_millions > 100;
 
-![alt text](image-3.png)
+![alt text](assets/q4.png)
 
 
 EXPLAIN ANALYZE:
