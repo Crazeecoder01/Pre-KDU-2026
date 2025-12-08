@@ -2,10 +2,10 @@
 def top_watched_movies():
     file_path = "Items.csv"
     movie_count = {}
-    
+  # NOtes: Add a csv validation (len constraint)  , instead of nested for loop, use method inside one loop to make it look cleaner
+            # read about file reading in streams
     try:
         with open(file_path, 'r') as file:
-            
             content = file.read()
             movies = content.strip().split(',')
             # print(movies)
@@ -27,6 +27,8 @@ def top_watched_movies():
     except FileNotFoundError:
         print('File not Found')
 
+    #check for any other exception
+    # avoid magic numbers, have global constants at the top
 if __name__ == "__main__":
     # print("Entry point")
     top_watched_movies()
