@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Task Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🍅 Pomodoro Timer</h1>
+        
+        <div class="timer-display" id="timerDisplay">01:00</div>
+        
+        <div class="controls">
+            <button id="startBtn" class="btn btn-start">Start</button>
+            <button id="pauseBtn" class="btn btn-pause">Pause</button>
+            <button id="resetBtn" class="btn btn-reset">Reset</button>
+        </div>
+        
+        <div class="custom-timer">
+            <h3>Set Custom Duration</h3>
+            <div class="input-group">
+                <input 
+                    type="number" 
+                    id="customMinutes" 
+                    placeholder="Minutes (1-60)" 
+                    min="1" 
+                    max="60"
+                >
+                <button id="setTimerBtn" class="btn btn-set">Set Timer</button>
+            </div>
+        </div>
+        
+        <div class="session-counter">
+            <p>Sessions Completed: <span id="sessionCount">0</span></p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
